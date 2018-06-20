@@ -20,9 +20,11 @@ function clear_by_ids(ids) {
   }
 }
 
-
-function fill_ids() {
-  if($('#assembly_accession').val() !== '') {
+function fill_ids(id) {
+  var ids = get_all_input_ids();
+  ids.splice(ids.indexOf(id), 1);
+  clear_by_ids(ids);
+  if(id === '#assembly_accession') {
     $.getJSON('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=assembly&term=' + $('#assembly_accession').val() + '[asac]&retmode=json',  function (data_esearch) {
       var uid = data_esearch['esearchresult']['idlist'][0];
       $('#uid').val(uid);
@@ -33,7 +35,7 @@ function fill_ids() {
         $('#synonym').val(JSON.stringify(synonym));
       });
     });
-  } else if ($('#assembly_name').val() !== '') {
+  } else if (id === '#assembly_name') {
     $.getJSON('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=assembly&term=' + $('#assembly_name').val() + '[name]&retmode=json',  function (data_esearch) {
       var uid = data_esearch['esearchresult']['idlist'][0];
       $('#uid').val(uid);
@@ -44,7 +46,7 @@ function fill_ids() {
         $('#synonym').val(JSON.stringify(synonym));
       });
     });
-  } else if ($('#uid').val() !== '') {
+  } else if (id === '#uid') {
     var uid = $('#uid').val();
     $.getJSON('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=assembly&id=' + uid + '&retmode=json',  function (data_esummary) {
       var assembly_name = data_esummary['result'][uid]['assemblyname'];
@@ -62,34 +64,42 @@ var call_fill_ids =  _.debounce(fill_ids, 500);
 $(function(){
   $('#assembly_accession').on('change paste keyup', function() {
     if($('#assembly_accession').val() === '') {
-      enable_by_ids(['#assembly_name', '#uid']);
-      clear_by_ids(['#assembly_name', '#uid']);
+      var ids = get_all_input_ids();
+      ids = _.without(ids, '#assembly_accession');
+      clear_by_ids(ids);
+      ids = _.without(ids, '#synonym');
+      enable_by_ids(ids);
     } else {
       disable_by_ids(['#assembly_name', '#uid']);
-      call_fill_ids();
+      call_fill_ids('#assembly_accession');
     }
   });
   $('#assembly_name').on('change paste keyup', function() {
     if($('#assembly_name').val() === '') {
-      enable_by_ids(['#assembly_accession', '#uid']);
-      clear_by_ids(['#assembly_accession', '#uid']);
+      var ids = _.without(ids, '#assembly_name');
+      clear_by_ids(ids);
+      ids = _.without(ids, '#synonym');
+      enable_by_ids(ids);
     } else {
       disable_by_ids(['#assembly_accession', '#uid']);
-      call_fill_ids();
+      call_fill_ids('#assembly_accession');
     }
   });
   $('#uid').on('change paste keyup', function() {
     if($('#uid').val() === '') {
-      enable_by_ids(['#assembly_accession', '#assembly_name']);
-      clear_by_ids(['#assembly_accession', '#assembly_name']);
+      var ids = _.without(ids, '#uid');
+      clear_by_ids(ids);
+      ids = _.without(ids, '#synonym');
+      enable_by_ids(ids);
     } else {
       disable_by_ids(['#assembly_accession', '#assembly_name']);
-      call_fill_ids();
+      call_fill_ids('#assembly_accession');
     }
   });
   $('#clear').on('click', function() {
     var ids = get_all_input_ids();
     clear_by_ids(ids);
+    ids = _.without(ids, '#synonym');
     enable_by_ids(ids);
   });
 });
