@@ -62,21 +62,28 @@ function fill_ids(id) {
     });
   } else if (id === '#uid') {
     var uid = $('#uid').val();
-    $.getJSON('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=assembly&id=' + uid + '&retmode=json',  function (data_esummary) {
-      if (!('error' in data_esummary['result'][uid])) {
-        var assembly_name = data_esummary['result'][uid]['assemblyname'];
-        var assembly_accession = data_esummary['result'][uid]['assemblyaccession'];
-        var synonym = data_esummary['result'][uid]['synonym'];
-        $('#assembly_name').val(assembly_name);
-        $('#assembly_accession').val(assembly_accession);
-        $('#synonym').val(JSON.stringify(synonym));
-      } else {
-        var err_message = 'Wrong uid, please check again.';
-        $('#assembly_name').val(err_message);
-        $('#assembly_accession').val(err_message);
-        $('#synonym').val(err_message);
-      }
-    });
+    if (Math.floor(uid) == uid && $.isNumeric(uid) && uid.indexOf('.') === -1) {
+      $.getJSON('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=assembly&id=' + uid + '&retmode=json',  function (data_esummary) {
+        if (!('error' in data_esummary['result'][uid])) {
+          var assembly_name = data_esummary['result'][uid]['assemblyname'];
+          var assembly_accession = data_esummary['result'][uid]['assemblyaccession'];
+          var synonym = data_esummary['result'][uid]['synonym'];
+          $('#assembly_name').val(assembly_name);
+          $('#assembly_accession').val(assembly_accession);
+          $('#synonym').val(JSON.stringify(synonym));
+        } else {
+          var err_message = 'Wrong uid, please check again.';
+          $('#assembly_name').val(err_message);
+          $('#assembly_accession').val(err_message);
+          $('#synonym').val(err_message);
+        }
+      });
+    } else {
+      var err_message = 'uid should be an integer (without ending period), please check again.';
+      $('#assembly_name').val(err_message);
+      $('#assembly_accession').val(err_message);
+      $('#synonym').val(err_message);
+    }
   }
 }
 
