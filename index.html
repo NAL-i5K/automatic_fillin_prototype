@@ -18,21 +18,82 @@
 
   <body>
     <div class="container">
+      <h1>Request a new i5k Workspace Project</h1>
       <form>
         <label>Please insert the organism name or NCBI taxnomy ID</label>
         <div class="form-group">
-          <label for="organism_name">Organism Name (ex: Aethina tumida, Anoplophora glabripennis)</label>
+          <label for="organism_name">Organism Name (ex: cat, Aethina tumida, Anoplophora glabripennis)</label>
           <input type="text" class="form-control" id="organism_name" name="organism_name">
         </div>
         <div class="form-group">
             <label for="tax_id">Taxonomy ID (ex: 116153, 217634)</label>
             <input type="text" class="form-control" id="tax_id" name="tax_id">
         </div>
-        <button type="button" id="organism-next" class="btn btn-primary" disabled>Next</button>
+        <button type="button" id="organism-search" class="btn btn-primary" disabled>Search</button>
         <hr>
+        <div class="form-group">
+            <label for="genus">Genus</label>
+            <input type="text" class="form-control" id="genus" name="genus" disabled>
+        </div>
+        <div class="form-group">
+            <label for="species">Species</label>
+            <input type="text" class="form-control" id="species" name="species" disabled>
+        </div>
+        <div class="form-group">
+            <label for="common_name">Common name(s)</label>
+            <input type="text" class="form-control" id="common_name" name="common_name" disabled>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="additional_common_name">Additional common name(s)</label>
+            <input type="text" class="form-control" id="additional_common_name" name="additional_common_name">
+        </div>
+        <div class="form-group">
+            <label for="cross-record">Is the genome assembly already hosted at another genome portal, or is there another genome portal that would also be
+                appropriate to host your dataset (e.g. VectorBase, HGD) ?</label>
+            <input type="text" class="form-control" id="cross-record" name="cross-record">
+        </div>
+        <div class="form-group">
+            <label for="is-ncbi-submitted">Have you submitted the genome assembly to NCBI, or another INSDC member ?</label>
+            <select class="form-control" id="is-ncbi-submitted" name="is-ncbi-submitted">
+                <option selected>Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="is-re-assembly">Is this a re-assembly or new assembly of an existing i5k Workspace organism ?</label>
+            <select class="form-control" id="is-re-assembly" name="is-re-assembly">
+                <option selected>Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="is-involved">Were you involved in the generation of this genome assembly ?</label>
+            <select class="form-control" id="is-involved" name="is-involved">
+                <option selected>Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="plan">Briefly describe your plans for this genome project at the i5k Workspace (e.g. are you interested in community curation ?).</label>
+            <textarea class="form-control" rows="5" id="plan"></textarea>
+        </div>
+        <h3>Please add your contact information so we can get in touch with you about your genome project.</h3>
+        <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" class="form-control" id="full-name" name="full-name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email">
+        </div>
+        <button type="button" id="submit" class="btn btn-primary">Submit</button>
       </form>
-      <table id="id-table"></table>
-      <button type="button" id="select-assembly" class="btn btn-primary">Select</button>
+      <hr>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
