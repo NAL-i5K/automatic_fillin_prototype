@@ -42,13 +42,19 @@ $(function(){
   $('#organism-search').click(function() {
     var tax_id = $('#tax_id').val();
     var orgn_name = $('#organism_name').val();
-    if (tax_id !== '') {
+    if (tax_id !== '' && !$('#tax_id').is(':disabled')) {
       $.getJSON('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=taxonomy&id=' + tax_id + '&retmode=json',  function (data_esummary) {
-        if (data_esummary['result']['uids'].length === 0) {
+      console.log(data_esummary);  
+      if (data_esummary['result']['uids'].length === 0) {
           $('#organism_name').val('No organism found, please check and search again.');
         } else {
-          $('#organism_name').val(data_esummary['result'][tax_id]['scientificname']);
-          fill_fields(data_esummary);
+          var uid = data_esummary['result']['uids'][0];
+          if ('error' in data_esummary['result'][uid]) {
+            $('#organism_name').val('Please check your tax id again.');
+          } else {
+            $('#organism_name').val(data_esummary['result'][tax_id]['scientificname']);
+            fill_fields(data_esummary);
+          }
         }
       });
     } else {
