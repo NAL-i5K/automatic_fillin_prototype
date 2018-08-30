@@ -1,0 +1,22 @@
+{
+  "name": "automatic_fillin_prototype",
+  "version": "1.0.0",
+  "description": "Prototype for automatic filling ids in data submission form. Online demo is available at [https://nal-i5k.github.io/automatic_fillin_prototype/](https://nal-i5k.github.io/automatic_fillin_prototype/).",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NAL-i5K/automatic_fillin_prototype.git"
+  },
+  "author": "",
+  "license": "NAL Public Domain",
+  "bugs": {
+    "url": "https://github.com/NAL-i5K/automatic_fillin_prototype/issues"
+  },
+  "homepage": "https://github.com/NAL-i5K/automatic_fillin_prototype#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
