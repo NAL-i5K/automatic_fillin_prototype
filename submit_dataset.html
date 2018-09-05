@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Request a new project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.18/sl-1.2.6/datatables.min.css"/>
+    <link rel="stylesheet" href="css/submit_dataset.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -17,7 +17,96 @@
   <body>
     <div class="container">
       <h1>Submit a dataset</h1>
-      <h2>Genome assembly information</h2>
+      <form>
+        <h3>Submitter information</h3>
+        <div class="form-group">
+          <label for="submitter_name">Submitter name</label>
+          <input type="text" class="form-control" id="submitter_name" name="submitter_name" value="this information will be automatically filled-in" disabled>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="text" class="form-control" id="email" name="email" value="this information will be automatically filled-in" disabled>
+        </div>
+        <h3>General dataset information</h3>
+        <div class="form-group">
+          <label for="tax_id">Organism (the list should be dynamically generated based on data in databases and choosing one of it will actually be mapped to tax id internally)</label>
+          <select class="form-control" id="tax_id" name="tax_id">
+            <option value="null" selected>Choose ...</option>
+            <option value="116153">Aethina tumida</option>
+            <option value="217634">Anoplophora glabripennis</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Dataset name *</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Program *</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Dataset version *</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Program version *</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Should we make this file available for download in our Data Downloads (/content/data-download) section ?</label>
+          <select type="text" class="form-control">
+            <option value="null" selected>Choose ...</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label>Additional information</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Is the dataset published ? *</label>
+          <select type="text" class="form-control">
+            <option value="null" selected>Choose ...</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Methods Citation (DOI)</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Is the dataset published ? *</label>
+          <select type="text" class="form-control">
+            <option value="null" selected>Choose ...</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>What type of dataset ? *</label>
+          <select type="text" id="dataset_type" class="form-control">
+            <option value="null" selected>Choose ...</option>
+            <option value="assembly">Genome assembly</option>
+            <option value="geneset">Gene set</option>
+            <option value="mapped">Mapped dataset</option>
+          </select>
+        </div>
+        Following section will be shown based on the dataset type option chosen above
+        <div class="form-group detailed_info" id="assembly_info">
+          TBD (genome assembly information)
+        </div>
+        <div class="form-group detailed_info" id="geneset_info">
+          TBD (gene set information)
+        </div>
+        <div class="form-group detailed_info" id="mapped_info">
+          TBD (mapped dataset information)
+        </div>
+        <h2>Select one of the following upload options</h2>
+        <h3>File information</h3>
+        This part will keep the same.
+      </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
