@@ -1,3 +1,7 @@
 .detailed_info {
   display: none;
 }
+
+#upload_info {
+  display: none;
+}

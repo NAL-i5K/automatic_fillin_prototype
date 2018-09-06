@@ -93,9 +93,71 @@
             <option value="mapped">Mapped dataset</option>
           </select>
         </div>
-        Following section will be shown based on the dataset type option chosen above
+        <div>
+          <button type="button" class="btn btn-primary" id="choose_dataset_type" aria-label="Left Align">Next</button>
+        </div>
+        <div>Following section will be shown based on the dataset type option chosen above</div>
         <div class="form-group detailed_info" id="assembly_info">
-          TBD (genome assembly information)
+          <h3>Genome assembly information</h3>
+          <h4>Project Background</h4>
+          <div>
+            <label>Project description to display in your organism page</label>
+            <textarea type="text" class="form-control"></textarea>
+          </div>
+          <div>
+            <label>Image name for your organism page (image submission form)</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label>Will you manually curate this assembly using i5k workspace tools</label>
+            <select type="text" class="form-control">
+              <option value="null" selected>Choose ...</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <h4>Data source information</h4>
+          <div>
+            <label>Geographic location (latitude and longitude)</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label>Tissue/Life stage included</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label>Sex</label>
+            <select type="text" class="form-control">
+              <option value="null" selected>Choose ...</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div>
+            <label>Strain</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label>Other notes</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label>Sequencing Methods</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <label>NCBI/INSDC Genome Assembly accession #</label>
+            <select id="assmbly_dropdown" type="text" class="form-control">
+              <option value="null" selected>Choose ...</option>
+            </select>
+          </div>
+          <div>
+            <label>Other notes</label>
+            <input type="text" class="form-control">
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary finish_dataset_info" aria-label="Left Align">Next</button>
+          </div>
         </div>
         <div class="form-group detailed_info" id="geneset_info">
           TBD (gene set information)
@@ -103,9 +165,11 @@
         <div class="form-group detailed_info" id="mapped_info">
           TBD (mapped dataset information)
         </div>
-        <h2>Select one of the following upload options</h2>
-        <h3>File information</h3>
-        This part will keep the same.
+        <div id="upload_info">
+          <h2>Select one of the following upload options</h2>
+          <h3>File information</h3>
+          This part will keep the same.
+        </div>
       </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
