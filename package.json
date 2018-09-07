@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/NAL-i5K/automatic_fillin_prototype#readme",
   "devDependencies": {
+    "jshint": "^2.9.6",
     "live-server": "^1.2.0"
   }
 }
