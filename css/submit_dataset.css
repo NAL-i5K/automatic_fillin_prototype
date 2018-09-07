@@ -1,7 +1,24 @@
-.detailed_info {
+.hidden_detailed_info {
   display: none;
 }
 
-#upload_info {
-  display: none;
+.panel-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.panel-collapse {
+  padding-top: 15px;
+}
+
+.btn {
+  margin-bottom: 15px;
+}
+
+#detailed_info_body {
+  padding-bottom: 15px;
+}
+
+#finish_dataset_info {
+  margin-top: 15px;
 }

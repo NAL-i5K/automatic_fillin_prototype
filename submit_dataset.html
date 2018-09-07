@@ -18,157 +18,208 @@
     <div class="container">
       <h1>Submit a dataset</h1>
       <form>
-        <h3>Submitter information</h3>
-        <div class="form-group">
-          <label for="submitter_name">Submitter name</label>
-          <input type="text" class="form-control" id="submitter_name" name="submitter_name" value="this information will be automatically filled-in" disabled>
-        </div>
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="text" class="form-control" id="email" name="email" value="this information will be automatically filled-in" disabled>
-        </div>
-        <h3>General dataset information</h3>
-        <div class="form-group">
-          <label for="tax_id">Organism (the list should be dynamically generated based on data in databases and choosing one of it will actually be mapped to tax id internally)</label>
-          <select class="form-control" id="tax_id" name="tax_id">
-            <option value="null" selected>Choose ...</option>
-            <option value="116153">Aethina tumida</option>
-            <option value="217634">Anoplophora glabripennis</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Dataset name *</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Program *</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Dataset version *</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Program version *</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Should we make this file available for download in our Data Downloads (/content/data-download) section ?</label>
-          <select type="text" class="form-control">
-            <option value="null" selected>Choose ...</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-        <div class="form-group">
-            <label>Additional information</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Is the dataset published ? *</label>
-          <select type="text" class="form-control">
-            <option value="null" selected>Choose ...</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Methods Citation (DOI)</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Is the dataset published ? *</label>
-          <select type="text" class="form-control">
-            <option value="null" selected>Choose ...</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>What type of dataset ? *</label>
-          <select type="text" id="dataset_type" class="form-control">
-            <option value="null" selected>Choose ...</option>
-            <option value="assembly">Genome assembly</option>
-            <option value="geneset">Gene set</option>
-            <option value="mapped">Mapped dataset</option>
-          </select>
-        </div>
-        <div>
-          <button type="button" class="btn btn-primary" id="choose_dataset_type" aria-label="Left Align">Next</button>
-        </div>
-        <div>Following section will be shown based on the dataset type option chosen above</div>
-        <div class="form-group detailed_info" id="assembly_info">
-          <h3>Genome assembly information</h3>
-          <h4>Project Background</h4>
-          <div>
-            <label>Project description to display in your organism page</label>
-            <textarea type="text" class="form-control"></textarea>
+        <div class="panel-group">
+          <div class="panel panel-primary">
+            <div class="panel-heading" role="tab">
+              <h3 role="button" class="panel-title" data-toggle="collapse" href="#submitter_form" aria-expanded="true">Submitter information</h3>
+            </div>
+            <div class="panel-body" id="submitter_panel_body">
+              <div class="panel-collapse collapse in" role="tabpanel" id="submitter_form">
+                <div class="form-group">
+                  <label for="#submitter_name">Submitter name</label>
+                  <input type="text" class="form-control" id="submitter_name" name="submitter_name" value="this information will be automatically filled-in" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="text" class="form-control" id="email" name="email" value="this information will be automatically filled-in" disabled>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <label>Image name for your organism page (image submission form)</label>
-            <input type="text" class="form-control">
+          <div class="panel panel-primary">
+            <div class="panel-heading" role="tab">
+              <h3 role="button" class="panel-title" data-toggle="collapse" href="#general_form" aria-expanded="true">General dataset information</h3>
+            </div>
+            <div class="panel-body" id="general_panel_body">
+              <div class="panel-collapse collapse in" role="tabpanel" id="general_form">
+                <div class="form-group">
+                  <label for="tax_id">Organism (the list should be dynamically generated based on data in databases and choosing one of it will actually be mapped to tax id internally)</label>
+                  <select class="form-control" id="tax_id" name="tax_id">
+                    <option value="null" selected>Choose ...</option>
+                    <option value="116153">Aethina tumida</option>
+                    <option value="217634">Anoplophora glabripennis</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Dataset name *</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Program *</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Dataset version *</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Program version *</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Should we make this file available for download in our Data Downloads (/content/data-download) section ?</label>
+                  <select type="text" class="form-control">
+                    <option value="null" selected>Choose ...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label>Additional information</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Is the dataset published ? *</label>
+                  <select type="text" class="form-control">
+                    <option value="null" selected>Choose ...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Methods Citation (DOI)</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Is the dataset published ? *</label>
+                  <select type="text" class="form-control">
+                    <option value="null" selected>Choose ...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Do you have official gene set ?</label>
+                  <br>
+                  <label class="radio-inline"><input type="radio" name="have_geneset" id="have_geneset">Yes</label>
+                  <label class="radio-inline"><input type="radio" name="have_geneset" checked>No</label>
+                </div>
+                <div class="form-group">
+                  <label>Do you have mapped dataset ?</label>
+                  <br>
+                  <label class="radio-inline"><input type="radio" name="have_mapped" id="have_mapped">Yes</label>
+                  <label class="radio-inline"><input type="radio" name="have_mapped" checked>No</label>
+                </div>
+                <button type="button" class="btn btn-primary" id="finish_general_info" aria-label="Left Align">Next</button>
+              </div>
+            </div>
           </div>
-          <div>
-            <label>Will you manually curate this assembly using i5k workspace tools</label>
-            <select type="text" class="form-control">
-              <option value="null" selected>Choose ...</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
+          <div class="panel panel-primary">
+            <div class="panel-heading" role="tab">
+              <h3 role="button" class="panel-title" data-toggle="collapse" href="#detailed_info_body" aria-expanded="true">Detailed dataset information</h3>
+            </div>
+            <div class="panel-body">
+              <div class="panel-collapse collapse" role="tabpanel" id="detailed_info_body">
+                <div class="panel panel-primary" id="assembly_info">
+                  <div class="panel-heading" role="tab">
+                    <h3 role="button" class="panel-title" data-toggle="collapse" href="#assembly_info_body" aria-expanded="true">Genome assembly information</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-collapse collapse in" role="tabpanel" id="assembly_info_body">
+                      <h4>Project Background</h4>
+                      <div class="form-group">
+                        <label>Project description to display in your organism page</label>
+                        <textarea type="text" class="form-control"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label>Image name for your organism page (image submission form)</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label>Will you manually curate this assembly using i5k workspace tools</label>
+                        <select type="text" class="form-control">
+                          <option value="null" selected>Choose ...</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
+                      <h4>Data source information</h4>
+                      <div class="form-group">
+                        <label>Geographic location (latitude and longitude)</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label>Tissue/Life stage included</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label>Sex</label>
+                        <select type="text" class="form-control">
+                          <option value="null" selected>Choose ...</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label>Strain</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div>
+                        <label>Other notes</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div>
+                        <label>Sequencing Methods</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div>
+                        <label>NCBI/INSDC Genome Assembly accession #</label>
+                        <select id="assmbly_dropdown" type="text" class="form-control">
+                          <option value="null" selected>Choose ...</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Other notes</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-primary hidden_detailed_info" id="geneset_info">
+                  <div class="panel-heading" role="tab">
+                    <h3 role="button" class="panel-title" data-toggle="collapse" href="#geneset_info_body" aria-expanded="true">Gene set information</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-collapse collapse in" role="tabpanel" id="geneset_info_body">
+                      TBD
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-primary hidden_detailed_info" id="mapped_info">
+                  <div class="panel-heading" role="tab">
+                    <h3 role="button" class="panel-title" data-toggle="collapse" href="#mapped_info_body" aria-expanded="true">Mapped dataset information</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-collapse collapse in" role="tabpanel" id="mapped_info_body">
+                      TBD
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary" id="finish_dataset_info" aria-label="Left Align">Next</button>
+              </div>
+            </div>
           </div>
-          <h4>Data source information</h4>
-          <div>
-            <label>Geographic location (latitude and longitude)</label>
-            <input type="text" class="form-control">
+          <div class="panel panel-primary">
+              <div class="panel-heading" role="tab">
+                <h3 role="button" class="panel-title" data-toggle="collapse" href="#upload_info_body" aria-expanded="true">File upload information</h3>
+              </div>
+              <div class="panel-body" role="tab">
+                <div class="panel-collapse collapse" role="tabpanel" id="upload_info_body">
+                  This part will keep the same.
+                  <h4>Select one of the following upload options</h4>
+                </div>
+              </div>
           </div>
-          <div>
-            <label>Tissue/Life stage included</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <label>Sex</label>
-            <select type="text" class="form-control">
-              <option value="null" selected>Choose ...</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </div>
-          <div>
-            <label>Strain</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <label>Other notes</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <label>Sequencing Methods</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <label>NCBI/INSDC Genome Assembly accession #</label>
-            <select id="assmbly_dropdown" type="text" class="form-control">
-              <option value="null" selected>Choose ...</option>
-            </select>
-          </div>
-          <div>
-            <label>Other notes</label>
-            <input type="text" class="form-control">
-          </div>
-          <div>
-            <button type="button" class="btn btn-primary finish_dataset_info" aria-label="Left Align">Next</button>
-          </div>
-        </div>
-        <div class="form-group detailed_info" id="geneset_info">
-          TBD (gene set information)
-        </div>
-        <div class="form-group detailed_info" id="mapped_info">
-          TBD (mapped dataset information)
-        </div>
-        <div id="upload_info">
-          <h2>Select one of the following upload options</h2>
-          <h3>File information</h3>
-          This part will keep the same.
         </div>
       </form>
     </div>
